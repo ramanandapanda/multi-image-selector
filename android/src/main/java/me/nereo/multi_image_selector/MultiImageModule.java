@@ -37,6 +37,7 @@ public class MultiImageModule extends ReactContextBaseJavaModule implements Acti
     private Activity activity;
     protected static final int REQUEST_STORAGE_READ_ACCESS_PERMISSION = 101;
     private boolean mShowCamera = true;
+    private boolean mCleanCache = true;
     private int maxNum = 5;
     private boolean multiple = true;
     private ArrayList<String> mSelectPath;
@@ -81,6 +82,7 @@ public class MultiImageModule extends ReactContextBaseJavaModule implements Acti
         cropping = options.hasKey("cropping") ? options.getBoolean("cropping"):cropping;
         width = options.hasKey("width") ? options.getInt("width"): width;
         height = options.hasKey("height") ? options.getInt("height"): height;
+        mCleanCache = options.hasKey("cleanCache") ? options.getBoolean("cleanCache"): mCleanCache;
     }
 
     @Override
@@ -100,6 +102,9 @@ public class MultiImageModule extends ReactContextBaseJavaModule implements Acti
             }
         }else if(requestCode == UCrop.REQUEST_CROP && resultCode == Activity.RESULT_OK){
             mPromise.resolve("file://"+UCrop.getOutput(data).getPath());
+        }
+        if(mCleanCache){
+            mSelectPath = null;
         }
     }
     public void startCropping(String path){

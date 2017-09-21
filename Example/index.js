@@ -35,7 +35,7 @@ export default class MyProject extends Component {
                 <View style={styles.container}>
                     <TouchableNativeFeedback style={{margin: 5}} onPress={()=> {
                         this.setState({imageArray: []})
-                    }}><Text>图片展示</Text></TouchableNativeFeedback>
+                    }}><Text>Clear</Text></TouchableNativeFeedback>
                     <ScrollView style={{flex: 1}}>
                         {this.state.imageArray.map(data=> {
                             return (<Image source={{uri: data}} style={{width: 200, height: 200}}/>)
