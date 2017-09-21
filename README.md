@@ -2,7 +2,7 @@
 multi-image-selector android for react-native
 
 # 1.npm Install (required)
-	npm i react-native-multi-image-selector --save 
+	npm i https://github.com/ramanandapanda/multi-image-selector.git#master --save 
 # Android:
 ## 2. Automatic Installation
 	react-native link 
